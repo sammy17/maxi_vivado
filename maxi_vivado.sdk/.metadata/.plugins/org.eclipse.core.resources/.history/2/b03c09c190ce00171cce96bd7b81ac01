@@ -1,0 +1,35 @@
+/*
+ * Empty C++ Application
+ */
+#include "frame1.h"
+#include <xfeature.h>
+#include <xbacksub.h>
+#include <xparameters.h>
+#include <stdio.h>
+#include <string.h>
+
+
+#define TX_BASE_ADDR 0x11000000
+#define RX_BASE_ADDR 0x12000000
+
+#define M_AXI_BOUNDING 0x21000000
+#define M_AXI_FEATUREH 0x29000000
+
+unsigned char *m_dma_buffer_TX = (unsigned char*) TX_BASE_ADDR;
+unsigned char *m_dma_buffer_RX = (unsigned char*) RX_BASE_ADDR;
+
+uint16_t * m_axi_bound = (uint16_t *) M_AXI_BOUNDING;
+uint16_t * m_axi_feature = (uint16_t *) M_AXI_FEATUREH;
+
+
+XBacksub backsub;
+XFeature feature;
+
+int main()
+{
+	XBacksub_Initialize(&backsub,XPAR_BACKSUB_0_DEVICE_ID);
+	XFeature_Initialize(&feature,XPAR_FEATURE_0_DEVICE_ID);
+
+
+	return 0;
+}
